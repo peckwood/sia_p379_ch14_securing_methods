@@ -15,12 +15,13 @@ What we did in chapter 9(Securing web applications) was securing the **web layer
   - `@EnableGlobalMethodSecurity(jsr250Enabled=true)`
 - Expression-driven annotations, with @PreAuthorize, @PostAuthorize, @PreFilter, and @PostFilter
   - more powerful than the above 2 (can specify beyond ROLES)
+  - Complex expressions and non-security business logic expressions should be avoided. As they are just Strings passed to annotations, they are not checked and it is easy to make mistakes.
+  - You can write custom permission evaluators for complex expressions. Written in Java, it is checked. Works behind the scenes of `hasPermission()` function in SpEL
 
 WebSecurityConfigurerAdapter vs GlobalMethodSecurityConfiguration 
 
-secures: web layer | methods
-
-both have method configure(AuthenticationManagerBuilder auth)
+- secures: web layer | methods
+- both have method configure(AuthenticationManagerBuilder auth)
 
 ---
 
